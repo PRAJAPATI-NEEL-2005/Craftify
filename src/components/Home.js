@@ -5,7 +5,7 @@ import { Spinner, Button } from 'react-bootstrap';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  const topics = ["art", "nature", "space", "cityscape", "fantasy"];
+  const topics = ["art", "nature", "space", "cityscape", "fantasy","animal",  "abstract", "food", "technology"];
 
   // Function to handle image loading state
   const handleImageLoad = () => {
