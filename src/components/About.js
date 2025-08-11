@@ -55,7 +55,7 @@ export default function About() {
               </div>
             </Card.Body>
             <Card.Footer className="bg-light text-center border-0 rounded-bottom-4">
-              <p className="text-muted mb-0">Made by Neel</p>
+              <p className="text mb-0">Made by Neel</p>
             </Card.Footer>
           </Card>
         </Col>
