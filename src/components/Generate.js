@@ -9,7 +9,7 @@ export default function Generate() {
   const [isLoading, setIsLoading] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [error, setError] = useState(null);
-
+const [isImageLoading, setIsImageLoading] = useState(true);
   const handleGenerate = () => {
     if (!prompt.trim()) {
       setError('Please enter a description for your image.');
@@ -18,7 +18,7 @@ export default function Generate() {
     setError(null);
     setIsLoading(true);
     setImageUrl('');
-
+    setIsImageLoading(true); 
     // Simulate an API call to the image generation service
     setTimeout(() => {
       try {
@@ -160,13 +160,15 @@ export default function Generate() {
                   </Button>
                 </div>
               </Card.Header>
-              <Card.Body className="p-0 d-flex align-items-center justify-content-center">
-                <img
-                  src={imageUrl}
-                  alt="AI Generated"
-                  className="img-fluid"
-                />
-              </Card.Body>
+             <Card.Body className="p-0 d-flex align-items-center justify-content-center" style={{ minHeight: "300px" }}>
+        {isImageLoading && <Spinner animation="border" variant="primary" />}
+        <img
+          src={imageUrl}
+          alt="AI Generated"
+          className={`img-fluid ${isImageLoading ? "d-none" : ""}`}
+          onLoad={() => setIsImageLoading(false)}
+        />
+      </Card.Body>
             </Card>
           )}
 
