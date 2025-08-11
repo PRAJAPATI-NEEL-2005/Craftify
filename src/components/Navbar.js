@@ -12,21 +12,33 @@ export default function AppNavbar() {
           <span className="text-secondary">Craft</span>ify
         </Navbar.Brand>
         <div className="ms-auto d-flex align-items-center">
-          <Nav.Link as={Link} to="/generate" className="text-dark me-3">
-            Generate
-          </Nav.Link>
           <Nav.Link as={Link} to="/about" className="text-dark me-3">
             About
           </Nav.Link>
           <Nav.Link
-            href="https://github.com/PRAJAPATI-NEEL-2005"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="d-flex align-items-center"
-            aria-label="Visit my GitHub profile"
-          >
-            <Github size={20} className="text-dark" />
-          </Nav.Link>
+  as={Link}
+  to="/generate"
+  className="bg-primary text-white rounded px-3 py-1 me-3"
+  style={{ borderRadius: '20px' }}
+>
+  Generate
+</Nav.Link>
+
+<Nav.Link
+  href="https://github.com/PRAJAPATI-NEEL-2005"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="d-flex align-items-center justify-content-center bg-light border rounded"
+  style={{
+    width: '36px',
+    height: '36px',
+    borderRadius: '8px', // square-rounded
+  }}
+  aria-label="Visit my GitHub profile"
+>
+  <Github size={20} className="text-dark" />
+</Nav.Link>
+
         </div>
       </Container>
     </Navbar>
