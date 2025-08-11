@@ -1,33 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Github } from 'react-bootstrap-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function Navbar() {
+export default function AppNavbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-      <div className="container">
-        <Link className="navbar-brand text-primary fw-bold fs-4" to="/">
+    <Navbar className="bg-light shadow-sm">
+      <Container>
+        <Navbar.Brand as={Link} to="/" className="text-primary fw-bold fs-4">
           <span className="text-secondary">Craft</span>ify
-        </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link className="nav-link text-dark" to="/generate">
-                Generate
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link text-dark" to="/about">
-                About
-              </Link>
-            </li>
-           
-          </ul>
+        </Navbar.Brand>
+        <div className="ms-auto d-flex align-items-center">
+          <Nav.Link as={Link} to="/generate" className="text-dark me-3">
+            Generate
+          </Nav.Link>
+          <Nav.Link as={Link} to="/about" className="text-dark me-3">
+            About
+          </Nav.Link>
+          <Nav.Link
+            href="https://github.com/PRAJAPATI-NEEL-2005"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="d-flex align-items-center"
+            aria-label="Visit my GitHub profile"
+          >
+            <Github size={20} className="text-dark" />
+          </Nav.Link>
         </div>
-      </div>
-    </nav>
+      </Container>
+    </Navbar>
   );
 }
