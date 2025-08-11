@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Form, Button, Spinner, Card } from 'react-bootstrap';
-import { CloudArrowDownFill } from 'react-bootstrap-icons';
+import { CloudArrowDownFill, ShareFill } from 'react-bootstrap-icons';
 
 export default function Generate() {
   const [prompt, setPrompt] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const [error, setError] = useState(null);
 
   const handleGenerate = () => {
@@ -28,17 +29,51 @@ export default function Generate() {
       } finally {
         setIsLoading(false);
       }
-    }, 1500); // Increased delay for a smoother loading animation
+    }, 1500);
   };
 
-  const handleDownload = () => {
-    if (imageUrl) {
+  const handleDownload = async () => {
+    if (!imageUrl) return;
+
+    setIsDownloading(true);
+    try {
+      const response = await fetch(imageUrl);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      
       const link = document.createElement('a');
-      link.href = imageUrl;
-      link.download = `${prompt.slice(0, 20).replace(/\s/g, '-') || 'generated-image'}.png`;
+      link.href = url;
+      link.setAttribute('download', `${prompt.slice(0, 20).replace(/\s/g, '-') || 'generated-image'}.png`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Download failed:', error);
+      alert('Could not download image. Please try again.');
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Craftify AI Image',
+          text: `Check out this AI-generated image I made with the prompt: "${prompt}"`,
+          url: imageUrl,
+        });
+      } catch (error) {
+        console.error('Sharing failed:', error);
+      }
+    } else {
+      // Fallback for browsers that do not support the Web Share API
+      alert('Your browser does not support the Web Share API. Please try downloading the image instead.');
     }
   };
 
@@ -112,9 +147,18 @@ export default function Generate() {
             <Card className="shadow-lg h-100 border-0 rounded-4 overflow-hidden">
               <Card.Header className="bg-primary text-white text-start d-flex justify-content-between align-items-center p-3">
                 <h5 className="mb-0 fw-bold">Generated Image</h5>
-                <Button variant="light" onClick={handleDownload} className="rounded-pill p-2">
-                  <CloudArrowDownFill size={20} />
-                </Button>
+                <div>
+                  <Button variant="light" onClick={handleShare} className="rounded-pill p-2 me-2">
+                    <ShareFill size={20} />
+                  </Button>
+                  <Button variant="light" onClick={handleDownload} className="rounded-pill p-2" disabled={isDownloading}>
+                    {isDownloading ? (
+                      <Spinner animation="border" size="sm" />
+                    ) : (
+                      <CloudArrowDownFill size={20} />
+                    )}
+                  </Button>
+                </div>
               </Card.Header>
               <Card.Body className="p-0 d-flex align-items-center justify-content-center">
                 <img
