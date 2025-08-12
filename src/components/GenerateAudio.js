@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Form, Button, Spinner, Card } from 'react-bootstrap';
-import { CloudArrowDownFill } from 'react-bootstrap-icons';
+import { CloudArrowDownFill, MicFill } from 'react-bootstrap-icons';
 
 export default function GenerateAudio() {
   const [prompt, setPrompt] = useState('');
@@ -83,7 +83,7 @@ export default function GenerateAudio() {
           <Card className="shadow-lg border-0 rounded-4">
             <Card.Body className="p-4 d-flex flex-column align-items-stretch">
               <div>
-                <h2 className="text-center text-primary fw-bold mb-3">Text to Speech Generator 🎙️</h2>
+                <h2 className="text-center text-primary fw-bold mb-3"><MicFill size={40} className='me-2 ' />Text to Speech Generator  </h2>
                 <p className="text-muted text-center mb-4">
                     Enter your text , select a voice, and generate Speech. You can also download the generated speech file.
                 </p>
