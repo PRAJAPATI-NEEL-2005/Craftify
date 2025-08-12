@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Form, Button, Spinner, Card } from 'react-bootstrap';
-import { CloudArrowDownFill, ShareFill } from 'react-bootstrap-icons';
+import { CloudArrowDownFill, Image, ShareFill } from 'react-bootstrap-icons';
 
 export default function Generate() {
   const [prompt, setPrompt] = useState('');
@@ -97,7 +97,7 @@ const [isImageLoading, setIsImageLoading] = useState(true);
           <Card className="shadow-lg h-100 border-0 rounded-4">
             <Card.Body className="p-5 d-flex flex-column justify-content-between">
               <div>
-                <h2 className="text-center text-primary fw-bold mb-3">Generate Your Image 🖼️</h2>
+                <h2 className="text-center text-primary fw-bold mb-3"><Image size={40} className='me-2'/> Generate  Image</h2>
                 <p className="text-muted text-center mb-4">
                   Describe the image you want to create and click generate!
                 </p>
