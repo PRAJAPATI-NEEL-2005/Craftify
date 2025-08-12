@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 export default function About() {
   return (
@@ -43,16 +42,17 @@ export default function About() {
                 </Col>
               </Row>
 
-              <div className="text-center mt-5">
-                <p className="lead text-dark">
-                  Ready to start creating your masterpiece?
+              {/* New TTS Feature Info */}
+              <div className="mt-5 p-4 bg-light rounded-3">
+                <h3 className="text-dark">🎙️ Text-to-Speech Generator</h3>
+                <p className="text-muted">
+                  Bring your words to life with our built-in text-to-speech feature. Simply type your text, 
+                  choose a voice, and let Craftify generate high-quality audio for your content — perfect for 
+                  narrations, podcasts, or adding voice to your projects.
                 </p>
-                <Link to="/generate">
-                  <Button variant="primary" size="lg" className="rounded-pill shadow-sm">
-                    Start Generating Now
-                  </Button>
-                </Link>
               </div>
+
+              
             </Card.Body>
             <Card.Footer className="bg-light text-center border-0 rounded-bottom-4">
               <p className="text mb-0">Made by Neel</p>
