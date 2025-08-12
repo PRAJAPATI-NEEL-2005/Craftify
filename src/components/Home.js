@@ -2,20 +2,27 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Spinner, Button } from "react-bootstrap";
-
+import PixelTransition from "./ReactBit/PixelTransition";
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  const topics = [
-    "art",
-    "nature",
-    "space",
-    "cityscape",
-    "fantasy",
-    "animal",
-    "abstract",
-    "food",
-    "technology",
-  ];
+const topics = [
+  "ocean",
+  "desert",
+  "mountains",
+  "cyberpunk",
+  "steampunk",
+  "mythology",
+  "superheroes",
+  "architecture",
+  "vintage",
+  "futuristic",
+  "wildlife",
+  "sports",
+  "fashion",
+  "robotics",
+  "medieval"
+];
+
 
   // Function to handle image loading state
   const handleImageLoad = () => {
@@ -46,11 +53,12 @@ export default function Home() {
 
       <hr className="my-5" />
 
-      <h2 className="mb-4 text-dark">Explore AI-Generated Art</h2>
+      <h2 className="mb-4 text-primary">Explore AI-Generated Art</h2>
+        <hr className="my-5" />
       <div className="row g-4">
         {topics.map((topic, index) => (
           <div className="col-md-4 col-sm-6" key={index}>
-            <div className="card h-100 shadow-sm border-0">
+           
               <div className="card-body p-0">
                 {loading && (
                   <div
@@ -60,16 +68,49 @@ export default function Home() {
                     <Spinner animation="border" variant="primary" />
                   </div>
                 )}
-                <img
-                  src={`https://image.pollinations.ai/prompt/${topic}`}
-                  alt={topic}
-                  className={`img-fluid rounded-top ${loading ? "d-none" : ""}`}
-                  onLoad={handleImageLoad}
+                <PixelTransition
+                  firstContent={
+                   <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        display: "grid",
+                        placeItems: "center",
+                        backgroundColor: "#697172ff",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontWeight: 900,
+                          fontSize: "1.5rem",
+                          color: "#ffffffff",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {topic}
+                      </p>
+                    </div>
+                  }
+                  secondContent={
+                    
+                     <img
+                      src={`https://image.pollinations.ai/prompt/${topic}`}
+                      alt={topic}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        borderRadius: "0.5rem",
+                        objectFit: "cover",
+                      }}
+                      onLoad={() => handleImageLoad(index)}
+                    />
+                  }
+                  gridSize={12}
+                  pixelColor="#ffffff"
+                  animationStepDuration={0.4}
+                  className="custom-pixel-card"
                 />
-              </div>
-              <div className="card-footer bg-white border-0 text-center py-3">
-                <h5 className="card-title text-capitalize mb-0">{topic}</h5>
-              </div>
+              
             </div>
           </div>
         ))}
