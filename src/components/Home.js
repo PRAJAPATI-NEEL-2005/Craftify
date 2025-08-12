@@ -76,7 +76,7 @@ const topics = [
                         height: "100%",
                         display: "grid",
                         placeItems: "center",
-                        backgroundColor: "#697172ff",
+                        backgroundColor: "#0d6efd",
                       }}
                     >
                       <p
@@ -105,9 +105,9 @@ const topics = [
                       onLoad={() => handleImageLoad(index)}
                     />
                   }
-                  gridSize={12}
-                  pixelColor="#ffffff"
-                  animationStepDuration={0.4}
+                  gridSize={40}
+                  pixelColor="#ffffffff"
+                  animationStepDuration={0.5}
                   className="custom-pixel-card"
                 />
               
