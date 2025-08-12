@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';  
-import { Spinner, Button } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Spinner, Button } from "react-bootstrap";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  const topics = ["art", "nature", "space", "cityscape", "fantasy","animal",  "abstract", "food", "technology"];
+  const topics = [
+    "art",
+    "nature",
+    "space",
+    "cityscape",
+    "fantasy",
+    "animal",
+    "abstract",
+    "food",
+    "technology",
+  ];
 
   // Function to handle image loading state
   const handleImageLoad = () => {
@@ -15,13 +25,21 @@ export default function Home() {
   return (
     <div className="container text-center mt-5">
       <div className="py-5">
-        <h1 className="display-4 fw-bold text-primary">Welcome to Craftify ✨</h1>
+        <h1 className="display-4 fw-bold text-primary">
+          Welcome to Craftify ✨
+        </h1>
         <p className="lead text-muted mt-3">
-          Unleash your creativity and turn your imagination into stunning AI-generated art with the power of Pollinations AI.
+          Unleash your creativity and turn your imagination into stunning
+          AI-generated art with the power of Pollinations AI.
         </p>
         <Link to="/generate">
+          <Button variant="primary" size="lg" className="mt-4 shadow-sm me-3">
+            Start Creating Images
+          </Button>
+        </Link>
+        <Link to="/generateaudio">
           <Button variant="primary" size="lg" className="mt-4 shadow-sm">
-            Start Creating Now
+            Start Creating Speech
           </Button>
         </Link>
       </div>
@@ -35,14 +53,17 @@ export default function Home() {
             <div className="card h-100 shadow-sm border-0">
               <div className="card-body p-0">
                 {loading && (
-                  <div className="d-flex justify-content-center align-items-center bg-light" style={{ height: '200px' }}>
+                  <div
+                    className="d-flex justify-content-center align-items-center bg-light"
+                    style={{ height: "200px" }}
+                  >
                     <Spinner animation="border" variant="primary" />
                   </div>
                 )}
                 <img
                   src={`https://image.pollinations.ai/prompt/${topic}`}
                   alt={topic}
-                  className={`img-fluid rounded-top ${loading ? 'd-none' : ''}`}
+                  className={`img-fluid rounded-top ${loading ? "d-none" : ""}`}
                   onLoad={handleImageLoad}
                 />
               </div>
