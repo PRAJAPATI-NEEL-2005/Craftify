@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Spinner, Button } from "react-bootstrap";
 import PixelTransition from "./ReactBit/PixelTransition";
+import FallingText from "./textfall/FallingText";
 export default function Home() {
   const [loading, setLoading] = useState(true);
 const topics = [
@@ -32,13 +33,22 @@ const topics = [
   return (
     <div className="container text-center mt-5">
       <div className="py-5">
-        <h1 className="display-4 fw-bold text-primary">
+        <h1 className="display-4 fw-bold text-primary mb-4">
           Welcome to Craftify ✨
         </h1>
-        <p className="lead text-muted mt-3">
-          Unleash your creativity and turn your imagination into stunning
-          AI-generated art with the power of Pollinations AI.
-        </p>
+        <div className="mb-4 ">
+       <FallingText
+      text={`React Bits is a library of animated and interactive React components designed to streamline UI development and simplify your workflow.`}
+      highlightWords={["React", "Bits", "animated", "components", "simplify"]}
+      highlightClass="highlighted"
+      trigger="hover"
+      backgroundColor="transparent"
+      wireframes={false}
+      gravity={0.56}
+      fontSize="2rem"
+      mouseConstraintStiffness={0.9}
+/>
+</div>
         <Link to="/generate">
           <Button variant="primary" size="lg" className="mt-4 shadow-sm me-3">
             Start Creating Images
