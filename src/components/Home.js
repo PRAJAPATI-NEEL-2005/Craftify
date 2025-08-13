@@ -31,22 +31,22 @@ const topics = [
   };
 
   return (
-    <div className="container text-center mt-5">
+    <div className="container text-center mt-2">
       <div className="py-5">
         <h1 className="display-4 fw-bold text-primary mb-4">
           Welcome to Craftify ✨
         </h1>
-        <div className="mb-4 ">
+        <div className="mb-4 text-white">
        <FallingText
-      text={`React Bits is a library of animated and interactive React components designed to streamline UI development and simplify your workflow.`}
-      highlightWords={["React", "Bits", "animated", "components", "simplify"]}
-      highlightClass="highlighted"
+          text={`Unleash your creativity and turn your imagination into stunning AI-generated art with the power of Pollinations AI.`}
+    highlightWords={["creativity", "imagination", "AI-generated", "Pollinations"]}
+     highlightClass="highlighted"
       trigger="hover"
       backgroundColor="transparent"
       wireframes={false}
-      gravity={0.56}
+      gravity={0.30}
       fontSize="2rem"
-      mouseConstraintStiffness={0.9}
+      mouseConstraintStiffness={0.5}
 />
 </div>
         <Link to="/generate">
