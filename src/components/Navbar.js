@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Github, Image, MicFill, InfoCircle } from "react-bootstrap-icons";
+import { Image, MicFill, InfoCircle } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function AppNavbar() {
@@ -83,20 +83,6 @@ export default function AppNavbar() {
               About
             </Nav.Link>
 
-            <Nav.Link
-              href="https://github.com/PRAJAPATI-NEEL-2005"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="d-flex align-items-center justify-content-center bg-light border rounded my-1 my-md-0"
-              style={{
-                width: "36px",
-                height: "36px",
-                borderRadius: "8px",
-              }}
-              aria-label="Visit my GitHub profile"
-            >
-              <Github size={20} className="text-dark" />
-            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
