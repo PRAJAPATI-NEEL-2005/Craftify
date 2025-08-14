@@ -18,6 +18,8 @@ export default function Generate() {
   const [isDownloading, setIsDownloading] = useState(false);
   const [error, setError] = useState(null);
   const [isImageLoading, setIsImageLoading] = useState(true);
+  const [showFullscreen, setShowFullscreen] = useState(false);
+
   const handleGenerate = () => {
     if (!prompt.trim()) {
       setError("Please enter a description for your image.");
@@ -212,6 +214,7 @@ export default function Generate() {
           objectFit: "contain"
         }}
         onLoad={() => setIsImageLoading(false)}
+        onClick={() => setShowFullscreen(true)}
       />
     </Card.Body>
   </Card>
@@ -224,6 +227,59 @@ export default function Generate() {
               </p>
             </div>
           )}
+          {showFullscreen && (
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100vw",
+      height: "100vh",
+      backgroundColor: "rgba(0, 0, 0, 0.9)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999
+    }}
+  >
+   {/* Close Icon */}
+<Button
+  variant="light"
+  onClick={() => setShowFullscreen(false)}
+  style={{
+    position: "absolute",
+    top: "20px",
+    right: "20px",
+    width: "40px",          // Equal width and height
+    height: "40px",
+    borderRadius: "50%",    // Perfect circle
+    padding: 0,             // Remove extra padding
+    display: "flex",        // Center the icon
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: "20px",       // Icon/text size
+    fontWeight: "bold",
+    boxShadow: "0 2px 10px rgba(0,0,0,0.5)",
+    cursor: "pointer"
+  }}
+>
+  ✕
+</Button>
+
+
+    {/* Fullscreen Image */}
+    <img
+      src={imageUrl}
+      alt="Fullscreen AI Generated"
+      style={{
+        maxWidth: "90%",
+        maxHeight: "90%",
+        objectFit: "contain",
+        borderRadius: "8px"
+      }}
+    />
+  </div>
+)}
         </Col>
       </Row>
     </Container>
